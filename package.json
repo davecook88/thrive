@@ -7,10 +7,13 @@
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "@types/node": "^15.14.1",
     "mongodb": "^3.5.9",
     "mongoose": "^6.0.5",
     "next": "^11.1.2",
+    "next-auth": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

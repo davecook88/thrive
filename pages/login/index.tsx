@@ -1,11 +1,13 @@
 import React from "react";
-import Layout from "../Components/Layout/Layout";
-import dbConnect from "../lib/mongodb";
+import Layout from "../../Components/Layout/Layout";
+import dbConnect from "../../lib/mongodb";
+import { useSession, signIn } from "next-auth/client";
+import { Button } from "@material-ui/core";
 
 export default function Home({}) {
   return (
     <Layout showNav={true} title="Thrive in Spanish">
-      <div>Hello</div>
+      <Button onClick={() => signIn()}>Sign In</Button>
     </Layout>
   );
 }

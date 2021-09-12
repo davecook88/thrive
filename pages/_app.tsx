@@ -1,10 +1,20 @@
+import { createStyles, makeStyles, Theme } from "@material-ui/core";
 import { Provider } from "next-auth/client";
 import type { AppProps } from "next/app";
-// import "./styles.css";
+import "../public/styles.css";
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+      fontFamily: theme.typography.fontFamily,
+    },
+  })
+);
 
 // Use the <Provider> to improve performance and allow components that call
 // `useSession()` anywhere in your application to access the `session` object.
 export default function App({ Component, pageProps }: AppProps) {
+  const styles = useStyles();
   return (
     <Provider
       // Provider options are not required but can be useful in situations where
@@ -26,7 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
       }}
       session={pageProps.session}
     >
-      <Component {...pageProps} />
+      <Component {...pageProps} className={styles.root} />
     </Provider>
   );
 }

@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import { Menu } from "@material-ui/icons";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/client";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+  const [session] = useSession();
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -40,7 +42,11 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             La Karencita
           </Typography>
-          <Link href="/login">Login</Link>
+          {session ? (
+            <Button onClick={() => signOut()}>Logout</Button>
+          ) : (
+            <Link href="/login">Login</Link>
+          )}
         </Toolbar>
       </AppBar>
     </div>
